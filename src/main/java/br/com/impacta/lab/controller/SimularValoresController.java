@@ -51,8 +51,45 @@ public class SimularValoresController {
 		 * 
 		 */
 		
+		String produto = "";
+		String desc_pagamento = "";
+		double valor_base = 0;
+		double valor_final = 0;
+
+
+
+		 if(codigoProduto == 1){
+			valor_base =  70.00;
+			produto = "Camisa";
+		 }else if(codigoProduto == 2){
+			valor_base =  57.50;
+			produto = "Shorts";
+		}else if(codigoProduto == 3){
+			valor_base =  9.99;
+			produto = "Meia";
+		}else if(codigoProduto == 4){
+			valor_base =  35.00;
+			produto = "Toca";
+		}else if(codigoProduto == 5){
+			valor_base =  19.50;
+			produto = "Luvas";
+		}
+
+		if(codTipoPagamento == 1){
+			valor_final =  valor_base - (valor_base * 0.1);
+			desc_pagamento = "A vista no dinheiro com 10% de desconto";
+		 }else if(codTipoPagamento == 2){
+			valor_final =  valor_base - (valor_base * 0.05);
+			desc_pagamento = "A vista no cartão de crédito  com 5% de desconto";
+		}else if(codTipoPagamento == 3){
+			valor_final =  valor_base;
+			desc_pagamento = "Em duas parcelas sem nenhum desconto";
+		}else if(codTipoPagamento == 4){
+			valor_final =  valor_base + (valor_base * 0.1);
+			desc_pagamento = "Em três vezes com 10% de juros";
+		} 
 		
-		return ResponseEntity.ok("Hello world !");
+		return ResponseEntity.ok(produto + " sendo pago " + desc_pagamento + " custará " + valor_final + " reais");
 	}
 	
 }
